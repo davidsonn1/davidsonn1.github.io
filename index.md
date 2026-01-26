@@ -3,10 +3,10 @@ This is my github website<br>
 
 
 
-[Link to another page](./another-page.html).<br>
-[Link to another page](./another-page.html).<br>
-[Link to another page](./another-page.html).<br>
-[Link to another page](./another-page.html).<br>
+[Link to another page](./another-page.html)<br>
+[Link to another page](./another-page.html)<br>
+[Link to another page](./another-page.html)<br>
+[Link to another page](./another-page.html)<br>
 
 There should be whitespace between paragraphs.
 
