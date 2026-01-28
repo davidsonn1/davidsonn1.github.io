@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Neil Davidson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #fafaf8;
+            --bg-secondary: #f5f5f0;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --accent: #2a5a8e;
+            --accent-light: #4a7ab0;
+            --border: #e0e0dc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Karla', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            border-bottom: 2px solid var(--text-primary);
+            padding: 2.5rem 0 2rem;
+            margin-bottom: 3rem;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1.site-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 2px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent);
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        main {
+            animation: fadeIn 1s ease 0.2s both;
+        }
+
+        h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .project {
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project:last-child {
+            border-bottom: none;
+        }
+
+        .project h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .project-meta {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover {
+            color: var(--accent-light);
+            border-bottom-color: var(--accent-light);
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding: 2rem 0 3rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            h1.site-title {
+                font-size: 2.2rem;
+            }
+            nav {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="site-title">Neil Davidson</h1>
+            <nav>
+                <a href="./index.html">Projects</a>
+                <a href="./about.html">About</a>
+                <a href="./resume.html">Resume</a>
+                <a href="./contact.html">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <h2>Projects</h2>
+            
+            <div class="project">
+                <h3>Project Title One</h3>
+                <p class="project-meta">2025 • Web Development</p>
+                <p>A brief description of your first project. Explain what it does, what technologies you used, and what problems it solves. This is where you showcase your best work.</p>
+                <a href="#">View Project →</a>
+            </div>
+
+            <div class="project">
+                <h3>Project Title Two</h3>
+                <p class="project-meta">2024 • Application Development</p>
+                <p>Description of your second project. Highlight the key features, your role in the project, and any notable achievements or challenges you overcame.</p>
+                <a href="#">View Project →</a>
+            </div>
+
+            <div class="project">
+                <h3>Project Title Three</h3>
+                <p class="project-meta">2024 • Data Analysis</p>
+                <p>Information about another project. This could include the technologies used, the problem you were solving, and the impact your work had.</p>
+                <a href="#">View Project →</a>
+            </div>
+        </main>
+
+        <footer>
+            <p><a href="./index.html">← Back to Home</a></p>
+        </footer>
+    </div>
+</body>
+</html>

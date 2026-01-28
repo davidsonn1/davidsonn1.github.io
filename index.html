@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neil Davidson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #fafaf8;
+            --bg-secondary: #f5f5f0;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --accent: #2a5a8e;
+            --accent-light: #4a7ab0;
+            --border: #e0e0dc;
+            --code-bg: #f8f8f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Karla', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header/Navigation */
+        header {
+            border-bottom: 2px solid var(--text-primary);
+            padding: 2.5rem 0 2rem;
+            margin-bottom: 3rem;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1.site-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 2px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            animation: fadeIn 1s ease 0.2s both;
+        }
+
+        .intro {
+            margin-bottom: 3rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            max-width: 650px;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 0;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+        }
+
+        h4 {
+            font-size: 1.3rem;
+        }
+
+        h5 {
+            font-size: 1.1rem;
+        }
+
+        h6 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        /* Blockquote */
+        blockquote {
+            margin: 2rem 0;
+            padding: 1.5rem 2rem;
+            background: var(--bg-secondary);
+            border-left: 4px solid var(--accent);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p {
+            margin-bottom: 0.5rem;
+        }
+
+        blockquote p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Code Blocks */
+        pre {
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 2rem 0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        code {
+            background: var(--code-bg);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+
+        pre code {
+            background: transparent;
+            padding: 0;
+            color: var(--text-primary);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 1.5rem 0 1.5rem 2rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+            color: var(--text-primary);
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+        }
+
+        thead {
+            background: var(--bg-secondary);
+            border-bottom: 2px solid var(--border);
+        }
+
+        th {
+            text-align: left;
+            padding: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:hover {
+            background: var(--bg-secondary);
+        }
+
+        /* Horizontal Rule */
+        hr {
+            border: none;
+            border-top: 2px solid var(--border);
+            margin: 3rem 0;
+        }
+
+        /* Links */
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover {
+            color: var(--accent-light);
+            border-bottom-color: var(--accent-light);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding: 2rem 0 3rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            border-bottom: 1px solid var(--accent);
+        }
+
+        footer a:hover {
+            color: var(--accent-light);
+            border-bottom-color: var(--accent-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            h1.site-title {
+                font-size: 2.2rem;
+            }
+
+            nav {
+                gap: 1.5rem;
+            }
+
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.7rem; }
+            h3 { font-size: 1.4rem; }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.7rem;
+            }
+        }
+
+        /* Subtle animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .fade-in-delay {
+            opacity: 0;
+            animation: fadeIn 0.6s ease 0.3s forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="site-title">Neil Davidson</h1>
+            <nav>
+                <a href="./projects.html">Projects</a>
+                <a href="./about.html">About</a>
+                <a href="./resume.html">Resume</a>
+                <a href="./contact.html">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="intro fade-in">
+                <p>There should be whitespace between paragraphs.</p>
+                <p>There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.</p>
+            </div>
+
+            <section class="fade-in-delay">
+                <h1>Header 1</h1>
+                <p>This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.</p>
+
+                <h2>Header 2</h2>
+                <blockquote>
+                    <p>This is a blockquote following a header.</p>
+                    <p>When something is important enough, you do it even if the odds are not in your favor.</p>
+                </blockquote>
+
+                <h3>Header 3</h3>
+                <pre><code>// Javascript code with syntax highlighting.
+var fun = function lang(l) {
+  dateformat.i18n = require('./lang/' + l)
+  return true;
+}</code></pre>
+
+                <pre><code># Ruby code with syntax highlighting
+GitHubPages::Dependencies.gems.each do |gem, version|
+  s.add_dependency(gem, "= #{version}")
+end</code></pre>
+
+                <h4>Header 4</h4>
+                <ul>
+                    <li>This is an unordered list following a header.</li>
+                    <li>This is an unordered list following a header.</li>
+                    <li>This is an unordered list following a header.</li>
+                </ul>
+
+                <h5>Header 5</h5>
+                <ol>
+                    <li>This is an ordered list following a header.</li>
+                    <li>This is an ordered list following a header.</li>
+                    <li>This is an ordered list following a header.</li>
+                </ol>
+
+                <h6>Header 6</h6>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>head1</th>
+                            <th>head two</th>
+                            <th>three</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ok</td>
+                            <td>good swedish fish</td>
+                            <td>nice</td>
+                        </tr>
+                        <tr>
+                            <td>out of stock</td>
+                            <td>good and plenty</td>
+                            <td>nice</td>
+                        </tr>
+                        <tr>
+                            <td>ok</td>
+                            <td>good <code>oreos</code></td>
+                            <td>hmm</td>
+                        </tr>
+                        <tr>
+                            <td>ok</td>
+                            <td>good <code>zoute</code> drop</td>
+                            <td>yumm</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>There's a horizontal rule below this.</h3>
+                <hr>
+            </section>
+        </main>
+
+        <footer>
+            <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
+        </footer>
+    </div>
+</body>
+</html>
