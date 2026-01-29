@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neil Davidson</title>
+    <title>Neil Davidson - Developer & Creator</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #fafaf8;
-            --bg-secondary: #f5f5f0;
-            --text-primary: #1a1a1a;
-            --text-secondary: #666666;
-            --accent: #2a5a8e;
-            --accent-light: #4a7ab0;
-            --border: #e0e0dc;
-            --code-bg: #f8f8f6;
+            --primary: #0A0E27;
+            --secondary: #1A1F3A;
+            --accent: #4A90E2;
+            --accent-warm: #E8927C;
+            --text: #E8E9ED;
+            --text-muted: #9BA3B4;
+            --surface: #13172E;
+            --border: rgba(255, 255, 255, 0.08);
         }
 
         * {
@@ -26,400 +26,483 @@
         }
 
         body {
-            font-family: 'Karla', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.7;
-            font-size: 16px;
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 780px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        /* Background decoration */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -25%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(74, 144, 226, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            animation: float 20s ease-in-out infinite;
         }
 
-        /* Header/Navigation */
-        header {
-            border-bottom: 2px solid var(--text-primary);
-            padding: 2.5rem 0 2rem;
-            margin-bottom: 3rem;
-            animation: fadeIn 0.8s ease;
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h1.site-title {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.5px;
-            line-height: 1.2;
-        }
-
+        /* Navigation */
         nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 4rem;
             display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            background: rgba(10, 14, 39, 0.7);
+            border-bottom: 1px solid var(--border);
+            animation: slideDown 0.6s ease-out;
         }
 
-        nav a {
-            color: var(--text-secondary);
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .logo {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
             text-decoration: none;
-            font-weight: 500;
             font-size: 0.95rem;
-            letter-spacing: 0.3px;
-            transition: color 0.3s ease;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            transition: all 0.3s ease;
             position: relative;
-            padding-bottom: 2px;
         }
 
-        nav a::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -4px;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 1px;
             background: var(--accent);
             transition: width 0.3s ease;
         }
 
-        nav a:hover {
-            color: var(--accent);
+        .nav-links a:hover {
+            color: var(--text);
         }
 
-        nav a:hover::after {
+        .nav-links a:hover::after {
             width: 100%;
         }
 
-        /* Main Content */
-        main {
-            animation: fadeIn 1s ease 0.2s both;
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 4rem;
+            position: relative;
         }
 
-        .intro {
-            margin-bottom: 3rem;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid var(--border);
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
-        .intro p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            max-width: 650px;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .intro p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Libre Baskerville', serif;
-            font-weight: 700;
-            line-height: 1.3;
-            margin-top: 2.5rem;
-            margin-bottom: 1.2rem;
+        .hero-label {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: rgba(74, 144, 226, 0.1);
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-top: 0;
-        }
-
-        h2 {
-            font-size: 2rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
-        }
-
-        h3 {
-            font-size: 1.6rem;
-        }
-
-        h4 {
-            font-size: 1.3rem;
-        }
-
-        h5 {
-            font-size: 1.1rem;
-        }
-
-        h6 {
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        p {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 400;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
-            color: var(--text-primary);
+            letter-spacing: -0.03em;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
         }
 
-        /* Blockquote */
-        blockquote {
-            margin: 2rem 0;
-            padding: 1.5rem 2rem;
-            background: var(--bg-secondary);
-            border-left: 4px solid var(--accent);
-            font-style: italic;
-            color: var(--text-secondary);
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease-out 0.5s both;
         }
 
-        blockquote p {
-            margin-bottom: 0.5rem;
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
         }
 
-        blockquote p:last-child {
-            margin-bottom: 0;
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
-        /* Code Blocks */
-        pre {
-            background: var(--code-bg);
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 20px rgba(74, 144, 226, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #5BA3F5;
+            box-shadow: 0 6px 30px rgba(74, 144, 226, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
             border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 1.5rem;
-            overflow-x: auto;
-            margin: 2rem 0;
-            font-family: 'Monaco', 'Menlo', monospace;
-            font-size: 0.9rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--surface);
+            border-color: var(--accent);
+        }
+
+        /* Featured Work Section */
+        .section {
+            padding: 8rem 4rem;
+            position: relative;
+        }
+
+        .section-header {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        /* Project Grid */
+        .projects-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-warm));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            border-color: rgba(74, 144, 226, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            font-family: 'Instrument Serif', serif;
+            letter-spacing: -0.01em;
+        }
+
+        .project-description {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
             line-height: 1.6;
         }
 
-        code {
-            background: var(--code-bg);
-            padding: 0.2rem 0.5rem;
-            border-radius: 3px;
-            font-family: 'Monaco', 'Menlo', monospace;
-            font-size: 0.9rem;
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.35rem 0.75rem;
+            background: rgba(74, 144, 226, 0.1);
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            border-radius: 20px;
+            font-size: 0.8rem;
             color: var(--accent);
-        }
-
-        pre code {
-            background: transparent;
-            padding: 0;
-            color: var(--text-primary);
-        }
-
-        /* Lists */
-        ul, ol {
-            margin: 1.5rem 0 1.5rem 2rem;
-        }
-
-        li {
-            margin-bottom: 0.6rem;
-            color: var(--text-primary);
-        }
-
-        /* Table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0;
-            font-size: 0.95rem;
-        }
-
-        thead {
-            background: var(--bg-secondary);
-            border-bottom: 2px solid var(--border);
-        }
-
-        th {
-            text-align: left;
-            padding: 1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        td {
-            padding: 1rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        tr:hover {
-            background: var(--bg-secondary);
-        }
-
-        /* Horizontal Rule */
-        hr {
-            border: none;
-            border-top: 2px solid var(--border);
-            margin: 3rem 0;
-        }
-
-        /* Links */
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            border-bottom: 1px solid transparent;
-        }
-
-        a:hover {
-            color: var(--accent-light);
-            border-bottom-color: var(--accent-light);
+            font-weight: 500;
         }
 
         /* Footer */
         footer {
-            margin-top: 4rem;
-            padding: 2rem 0 3rem;
+            padding: 4rem;
             border-top: 1px solid var(--border);
             text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
         }
 
-        footer a {
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
             color: var(--accent);
-            border-bottom: 1px solid var(--accent);
+            transform: translateY(-3px);
         }
 
-        footer a:hover {
-            color: var(--accent-light);
-            border-bottom-color: var(--accent-light);
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-
-            h1.site-title {
-                font-size: 2.2rem;
-            }
-
             nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-links {
                 gap: 1.5rem;
             }
 
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.7rem; }
-            h3 { font-size: 1.4rem; }
-
-            table {
-                font-size: 0.85rem;
+            .hero {
+                padding: 0 2rem;
             }
 
-            th, td {
-                padding: 0.7rem;
+            .section {
+                padding: 4rem 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
             }
         }
 
-        /* Subtle animations */
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 0.6s ease forwards;
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
         }
 
-        .fade-in-delay {
-            opacity: 0;
-            animation: fadeIn 0.6s ease 0.3s forwards;
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .scroll-indicator::before {
+            content: '↓';
+            font-size: 1.5rem;
+            color: var(--text-muted);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1 class="site-title">Neil Davidson</h1>
-            <nav>
-                <a href="./projects.html">Projects</a>
-                <a href="./about.html">About</a>
-                <a href="./resume.html">Resume</a>
-                <a href="./contact.html">Contact</a>
-            </nav>
-        </header>
+    <nav>
+        <div class="logo">Neil Davidson</div>
+        <ul class="nav-links">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./projects.html">Projects</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./resume.html">Resume</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-        <main>
-            <div class="intro fade-in">
-                <p>Welcome</p>
-                <p>There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.</p>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Developer & Creator</span>
+            <h1>Building digital experiences that inspire</h1>
+            <p class="hero-subtitle">
+                I craft thoughtful solutions at the intersection of design and technology, 
+                transforming complex problems into elegant, user-centered experiences.
+            </p>
+            <div class="cta-buttons">
+                <a href="./projects.html" class="btn btn-primary">View My Work</a>
+                <a href="./contact.html" class="btn btn-secondary">Get In Touch</a>
             </div>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
 
-            <section class="fade-in-delay">
-                <h1>Header 1</h1>
-                <p>This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.</p>
 
-                <h2>Header 2</h2>
-                <blockquote>
-                    <p>This is a blockquote following a header.</p>
-                    <p>When something is important enough, you do it even if the odds are not in your favor.</p>
-                </blockquote>
 
-                <h3>Header 3</h3>
-                <pre><code>// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}</code></pre>
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://github.com/davidsonn1" target="_blank" title="GitHub">GitHub</a>
+                <a href="mailto:hello@neildavidson.dev" title="Email">Email</a>
+            </div>
+        </div>
+    </footer>
 
-                <pre><code># Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end</code></pre>
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
 
-                <h4>Header 4</h4>
-                <ul>
-                    <li>This is an unordered list following a header.</li>
-                    <li>This is an unordered list following a header.</li>
-                    <li>This is an unordered list following a header.</li>
-                </ul>
+        // Add scroll-based animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-                <h5>Header 5</h5>
-                <ol>
-                    <li>This is an ordered list following a header.</li>
-                    <li>This is an ordered list following a header.</li>
-                    <li>This is an ordered list following a header.</li>
-                </ol>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
 
-                <h6>Header 6</h6>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>head1</th>
-                            <th>head two</th>
-                            <th>three</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>ok</td>
-                            <td>good swedish fish</td>
-                            <td>nice</td>
-                        </tr>
-                        <tr>
-                            <td>out of stock</td>
-                            <td>good and plenty</td>
-                            <td>nice</td>
-                        </tr>
-                        <tr>
-                            <td>ok</td>
-                            <td>good <code>oreos</code></td>
-                            <td>hmm</td>
-                        </tr>
-                        <tr>
-                            <td>ok</td>
-                            <td>good <code>zoute</code> drop</td>
-                            <td>yumm</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h3>There's a horizontal rule below this.</h3>
-                <hr>
-            </section>
-        </main>
-
-        <footer>
-            <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
-        </footer>
-    </div>
+        document.querySelectorAll('.project-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
